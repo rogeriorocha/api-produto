@@ -1,0 +1,18 @@
+apiVersion: skaffold/v2beta19
+kind: Config
+metadata:
+  name: api-produto
+build:
+  artifacts:
+  - image: api-tutorial
+    context: src
+    docker:
+      dockerfile: Dockerfile
+deploy:
+  kubectl:
+    manifests:
+    - k8s/api/deployment.yaml
+    - k8s/api/service.yaml    
+    - k8s/api/api-gateway.yaml
+    - k8s/mongodb/deployment.yaml
+    - k8s/mongodb/service.yaml
